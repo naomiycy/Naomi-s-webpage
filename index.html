@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naomi's Portfolio</title>
+    <link rel="stylesheet" href="./dist/nano.min.css" />
+</head>
+<body>
+    <h1>My portfolio</h1>
+    <div id="projects">
+        <!-- 通过JavaScript动态加载项目 -->
+    </div>
+    <script>
+        // 替换为你的GitHub用户名
+        const username = 'your-github-username';
+
+        // 从GitHub API获取仓库信息展示
+        fetch(`https://api.github.com/users/${username}/repos`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应异常');
+                }
+                return response.json();
+            })
+            .then(data => displayProjects(data))
+            .catch(error => {
+                console.error('获取项目数据时出错:', error);
+                document.getElementById('projects').innerHTML = '<p>加载项目失败，请稍后重试。</p>';
+            });
+
+        function displayProjects(repos) {
+            const projectsContainer = document.getElementById('projects');
+            
+            if (!repos || repos.length === 0) {
+                projectsContainer.innerHTML = '<p>暂无公开项目。</p>';
+                return;
+            }
+
+            // 按star数量排序
+            repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+
+            let projectsHTML = '';
+            repos.forEach(repo => {
+                projectsHTML += `
+                    <div class="project">
+                        <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+                        <p>${repo.description || '暂无描述'}</p>
+                        <p>
+                            <span>⭐ ${repo.stargazers_count}</span> | 
+                            <span>语言: ${repo.language || '未指定'}</span> | 
+                            <span>更新于: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                        </p>
+                    </div>
+                `;
+            });
+
+            projectsContainer.innerHTML = projectsHTML;
+        }
+    </script>
+</body>
+</html>
