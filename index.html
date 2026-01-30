@@ -46,24 +46,137 @@
             <p>GitHub code share</p>
         </header>
 
-        <section>
-            <h2>My project</h2>
-            <div id="projects">
-                <div class="loading">Loading GitHub project</div>
-            </div>
-        </section>
+        <!-- =========== 设计作品画廊 =========== -->
+<section style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+    <h2>设计作品集</h2>
+    <p>点击任意封面图，查看完整设计细节。</p>
 
-        <section>
-            <h2>Portfolio</h2>
-            <p>Protfolio 1：</p>
-            <!-- Figma 设计稿嵌入区 -->
-            <div class="figma-embed-wrapper">
-                <iframe 
-                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FDlSTHMvUK6aHnIq1hhWf5o%2FReddot%3Fnode-id%3D0-1%26t%3DytCXZd3uq5BeSs45-1"
-                    allowfullscreen>
-                </iframe>
+    <!-- 画廊网格容器 -->
+    <div class="design-gallery" style="
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 1.5rem;
+    ">
+        <!-- 设计项目卡片 1 - Reddot -->
+        <div class="design-card" style="
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        " onclick="openModal('reddot')">
+            <!-- 封面图 -->
+            <img 
+                src="./designs/reddot-cover.jpg" 
+                alt="Reddot 项目 - 主界面设计预览"
+                style="width: 100%; height: 200px; object-fit: cover;"
+            >
+            <!-- 项目信息 -->
+            <div style="padding: 1.2rem;">
+                <h4 style="margin: 0 0 0.5rem 0; color: #333;">Reddot 项目</h4>
+                <p style="margin: 0; color: #666; font-size: 0.95rem; line-height: 1.5;">
+                    一套完整的移动端交互设计，专注于用户体验与视觉表现。
+                </p>
+                <span style="display: inline-block; margin-top: 0.8rem; font-size: 0.85rem; color: #7e57c2; font-weight: 500;">点击查看完整设计 →</span>
             </div>
-        </section>
+        </div>
+
+        <!-- 设计项目卡片 2 - 你可以复制上面的结构，添加更多项目 -->
+        <!-- 
+        <div class="design-card" style="..." onclick="openModal('项目名')">
+            <img src="./designs/第二份设计-cover.jpg" alt="..." style="...">
+            <div style="...">
+                <h4>第二个项目</h4>
+                <p>项目描述...</p>
+                <span>点击查看完整设计 →</span>
+            </div>
+        </div>
+        -->
+    </div>
+</section>
+
+<!-- =========== 模态弹窗 (点击后放大查看) =========== -->
+<div id="imageModal" style="
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 半透明黑色遮罩 */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+">
+    <!-- 大图容器 -->
+    <div style="position: relative; max-width: 90%; max-height: 90%;">
+        <!-- 关闭按钮 -->
+        <span onclick="closeModal()" style="
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            user-select: none;
+        ">×</span>
+        <!-- 大图 -->
+        <img id="fullSizeImage" src="" alt="完整设计图" style="
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        ">
+        <!-- 图片说明 -->
+        <p id="imageCaption" style="color: #ddd; text-align: center; margin-top: 1rem;"></p>
+    </div>
+</div>
+
+<script>
+// 定义设计项目的详细信息库
+const designProjects = {
+    'reddot': {
+        fullImage: './designs/reddot-full.jpg',
+        title: 'Reddot 项目完整设计',
+        description: '这是 Reddot 项目的高清完整设计图，展示了所有界面的细节与交互流程。'
+    }
+    // 添加更多项目：
+    // 'project2': {
+    //     fullImage: './designs/project2-full.jpg',
+    //     title: '...',
+    //     description: '...'
+    // }
+};
+
+// 打开模态窗的函数
+function openModal(projectKey) {
+    const project = designProjects[projectKey];
+    if (project) {
+        document.getElementById('fullSizeImage').src = project.fullImage;
+        document.getElementById('imageCaption').textContent = project.description;
+        document.getElementById('imageModal').style.display = 'flex';
+        // 禁止背景滚动
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// 关闭模态窗的函数
+function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+    // 恢复背景滚动
+    document.body.style.overflow = 'auto';
+}
+
+// 点击模态窗的黑色遮罩背景也可以关闭
+document.getElementById('imageModal').addEventListener('click', function(event) {
+    if (event.target.id === 'imageModal') {
+        closeModal();
+    }
+});
+</script>
     </main>
 
     <script>
@@ -116,5 +229,6 @@
     </script>
 </body>
 </html>
+
 
 
