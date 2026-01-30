@@ -3,60 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naomi's Portfolio</title>
-    <link rel="stylesheet" href="./dist/nano.min.css" />
+    <title>Naomi 的作品集</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        body { padding-top: 2rem; background-color: #f8f9fa; font-family: sans-serif; }
+        main.container { max-width: 900px; }
+        .project-card { 
+            background: white; 
+            padding: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid #7e57c2;
+        }
+        .project-card h3 { margin-top: 0; color: #333; }
+        .project-meta { color: #666; font-size: 0.9rem; margin-top: 0.8rem; }
+        .project-meta span { margin-right: 1rem; }
+        #projects .loading { text-align: center; padding: 3rem; color: #666; }
+        .figma-embed-wrapper { 
+            position: relative; 
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0; 
+            overflow: hidden; 
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .figma-embed-wrapper iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>My portfolio</h1>
-    <div id="projects">
-        <!-- 通过JavaScript动态加载项目 -->
-    </div>
-    <script>
-        // 替换为你的GitHub用户名
-        const username = 'your-github-username';
+    <main class="container">
+        <header style="text-align: center; margin-bottom: 3rem;">
+            <h1>Naomi 的作品集</h1>
+            <p>代码项目与交互设计展示</p>
+        </header>
 
-        // 从GitHub API获取仓库信息展示
-        fetch(`https://api.github.com/users/${username}/repos`)
+        <section>
+            <h2>我的项目</h2>
+            <div id="projects">
+                <div class="loading">正在加载 GitHub 项目...</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>设计作品</h2>
+            <p>Reddot 项目交互设计原型：</p>
+            <!-- Figma 设计稿嵌入区 -->
+            <div class="figma-embed-wrapper">
+                <iframe 
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FDlSTHMvUK6aHnIq1hhWf5o%2FReddot%3Fnode-id%3D0-1%26t%3DytCXZd3uq5BeSs45-1"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 配置：你的 GitHub 用户名
+        const username = 'naomiycy';
+
+        // 获取并展示项目
+        fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=20`)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应异常');
-                }
+                if (!response.ok) throw new Error('加载失败');
                 return response.json();
             })
-            .then(data => displayProjects(data))
+            .then(repos => {
+                const container = document.getElementById('projects');
+                // 过滤掉 Fork 的仓库
+                const originalRepos = repos.filter(repo => !repo.fork);
+                
+                if (originalRepos.length === 0) {
+                    container.innerHTML = '<p>暂无公开项目。</p>';
+                    return;
+                }
+
+                // 按星标数排序
+                originalRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+                
+                let html = '';
+                originalRepos.forEach(repo => {
+                    const updateTime = new Date(repo.updated_at).toLocaleDateString('zh-CN');
+                    html += `
+                        <div class="project-card">
+                            <h3>
+                                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                            </h3>
+                            <p>${repo.description || '暂无描述'}</p>
+                            <div class="project-meta">
+                                <span>⭐ ${repo.stargazers_count}</span>
+                                <span>语言: ${repo.language || '未指定'}</span>
+                                <span>更新: ${updateTime}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            })
             .catch(error => {
-                console.error('获取项目数据时出错:', error);
-                document.getElementById('projects').innerHTML = '<p>加载项目失败，请稍后重试。</p>';
+                document.getElementById('projects').innerHTML = 
+                    `<p style="color:#d32f2f;">项目加载失败，请稍后重试。</p>`;
+                console.error(error);
             });
-
-        function displayProjects(repos) {
-            const projectsContainer = document.getElementById('projects');
-            
-            if (!repos || repos.length === 0) {
-                projectsContainer.innerHTML = '<p>暂无公开项目。</p>';
-                return;
-            }
-
-            // 按star数量排序
-            repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
-
-            let projectsHTML = '';
-            repos.forEach(repo => {
-                projectsHTML += `
-                    <div class="project">
-                        <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-                        <p>${repo.description || '暂无描述'}</p>
-                        <p>
-                            <span>⭐ ${repo.stargazers_count}</span> | 
-                            <span>语言: ${repo.language || '未指定'}</span> | 
-                            <span>更新于: ${new Date(repo.updated_at).toLocaleDateString()}</span>
-                        </p>
-                    </div>
-                `;
-            });
-
-            projectsContainer.innerHTML = projectsHTML;
-        }
     </script>
 </body>
 </html>
