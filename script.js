@@ -4,9 +4,9 @@ const designProjects = {
     'reddot': {
         title: 'Reddot Project',
         details: [
-            { imageUrl: './images/portfolio1/P1-1.jpg', caption: 'Design detail 1.' },
-            { imageUrl: './designs/reddot-detail-2.jpg', caption: 'Design detail 2.' },
-            { imageUrl: './designs/reddot-detail-3.jpg', caption: 'Design detail 3.' }
+            { imageUrl: './images/portfolio1/P1-1.png', caption: 'Design detail 1.' },
+            { imageUrl: './images/portfolio1/P1-2.png', caption: 'Design detail 2.' },
+            { imageUrl: './images/portfolio1/P1-3.png', caption: 'Design detail 3.' }
         ]
     }
 };
@@ -80,4 +80,5 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
 });
+
 
