@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naomi 的作品集</title>
+    <title>Naomi's Portfolio</title>
     <!-- 引入PicoCSS框架 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <!-- 引入自定义样式文件 -->
@@ -18,70 +18,57 @@
 
         <!-- GitHub项目动态加载区 -->
         <section>
-            <h2>我的开源项目</h2>
+            <h2>The code of this web is open source in Github</h2>
             <div id="projects">
-                <!-- 项目将通过JavaScript动态加载到这里 -->
             </div>
         </section>
 
         <!-- 设计作品画廊 -->
+                <!-- 设计作品画廊 - 横向排列 -->
         <section class="gallery-section">
             <h2>My portfolios</h2>
             <p>Click any project to see details</p>
             
-        <!-- project 1 -->
-        <div class="design-card" onclick="openModal('reddot')">
-            <img src="images/1.jpg" alt="项目一的封面图描述">
-            <div class="design-card-content">
-                <h4>你的项目1真实名称</h4>
-                <p>你的项目1真实描述...</p>
-                <span class="view-details">Check the design details →</span>
-    </div>
-</div>
-
-        <!-- project 2 -->
-        <div class="design-card" onclick="openModal('reddot')">
-            <!-- 同理，修改这里的图片路径和描述 -->
-            <img src="images/2.jpg" alt="项目二的封面图描述">
-            <div class="design-card-content">
-                <h4>你的项目2真实名称</h4>
-                <p>你的项目2真实描述...</p>
-        <span class="view-details">Check the design details →</span>
-    </div>
-</div>
-
-        <!-- project 3 -->
-        <div class="design-card" onclick="openModal('reddot')">
-            <!-- 同理，修改这里的图片路径和描述 -->
-            <img src="images/3.jpg" alt="项目二的封面图描述">
-            <div class="design-card-content">
-                <h4>你的项目2真实名称</h4>
-                <p>你的项目2真实描述...</p>
-        <span class="view-details">Check the design details →</span>
-    </div>
-</div>
-
-        <!-- project 4 -->
-        <div class="design-card" onclick="openModal('reddot')">
-            <!-- 同理，修改这里的图片路径和描述 -->
-            <img src="images/4.jpg" alt="项目二的封面图描述">
-            <div class="design-card-content">
-                <h4>你的项目2真实名称</h4>
-                <p>你的项目2真实描述...</p>
-        <span class="view-details">Check the design details →</span>
-    </div>
-</div>
-
-        <!-- project 5 -->
-        <div class="design-card" onclick="openModal('reddot')">
-            <!-- 同理，修改这里的图片路径和描述 -->
-            <img src="images/5.jpg" alt="项目二的封面图描述">
-            <div class="design-card-content">
-                <h4>你的项目2真实名称</h4>
-                <p>你的项目2真实描述...</p>
-        <span class="view-details">Check the design details →</span>
-    </div>
-</div>
+            <!-- 横向滚动容器 -->
+            <div class="horizontal-gallery-container">
+                <!-- project 1 -->
+                <div class="design-card-horizontal" onclick="openModal('reddot')">
+                    <img src="images/1.jpg" alt="Project 1 Cover">
+                    <div class="design-card-footer">
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+                <!-- project 2 -->
+                <div class="design-card-horizontal" onclick="openModal('reddot')">
+                    <img src="images/2.jpg" alt="Project 2 Cover">
+                    <div class="design-card-footer">
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+                <!-- project 3 -->
+                <div class="design-card-horizontal" onclick="openModal('reddot')">
+                    <img src="images/3.jpg" alt="Project 3 Cover">
+                    <div class="design-card-footer">
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+                <!-- project 4 -->
+                <div class="design-card-horizontal" onclick="openModal('reddot')">
+                    <img src="images/4.jpg" alt="Project 4 Cover">
+                    <div class="design-card-footer">
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+                <!-- project 5 -->
+                <div class="design-card-horizontal" onclick="openModal('reddot')">
+                    <img src="images/5.jpg" alt="Project 5 Cover">
+                    <div class="design-card-footer">
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 提示文本 -->
+            <p class="scroll-hint">← Scroll horizontally to view more →</p>
         </section>
 
         <!-- 模态弹窗 (点击后放大查看) -->
@@ -98,5 +85,6 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
