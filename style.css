@@ -182,6 +182,89 @@ main.container {
     border-radius: 12px;
 }
 
+/* =========== 横向设计作品画廊 =========== */
+.horizontal-gallery-container {
+    display: flex; /* 启用Flexbox进行横向排列 */
+    flex-wrap: nowrap; /* 禁止换行，保持单行 */
+    overflow-x: auto; /* 允许横向滚动 */
+    overflow-y: hidden; /* 隐藏纵向滚动 */
+    gap: 1.5rem; /* 卡片之间的间距 */
+    padding: 1.5rem 0.5rem 2rem; /* 上 左右 下 的内边距 */
+    margin-top: 1rem;
+    scrollbar-width: thin; /* Firefox 滚动条样式 */
+}
+
+/* 针对Webkit浏览器（Chrome, Safari等）自定义滚动条 */
+.horizontal-gallery-container::-webkit-scrollbar {
+    height: 8px;
+}
+.horizontal-gallery-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+.horizontal-gallery-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+.horizontal-gallery-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* 横向排列的设计卡片 */
+.design-card-horizontal {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex: 0 0 auto; /* 关键：禁止伸缩，基于内容宽度 */
+    display: flex;
+    flex-direction: column;
+    /* 根据您的图片比例（22.6:44.17 ≈ 1:2）设置卡片宽度，高度自动 */
+    width: 280px; /* 固定一个合适的宽度，图片会等比例缩放 */
+    /* 如果希望宽度更灵活，可以使用：min-width: 250px; max-width: 300px; */
+}
+
+.design-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* 图片样式：完整等比例显示（contain），高度根据卡片宽度和原图比例自动计算 */
+.design-card-horizontal img {
+    width: 100%;
+    height: auto; /* 高度自动，根据图片原始比例 */
+    aspect-ratio: 22.6 / 44.17; /* 关键：直接锁定您图片的宽高比，确保完整显示 */
+    object-fit: contain; /* 完整显示图片，不裁剪 */
+    object-position: center top;
+    background-color: #f8f9fa; /* 图片背景色，用于填充可能出现的空白 */
+    flex-shrink: 0;
+    display: block;
+}
+
+/* 卡片底部文字区域 */
+.design-card-footer {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+    flex-shrink: 0;
+}
+
+/* 横向滚动提示文字 */
+.scroll-hint {
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+/* 可选：为了更佳视觉效果，可以隐藏原垂直布局的卡片样式 */
+/* 如果您不再需要垂直布局，可以在文件顶部将原来的 .design-card 相关样式注释掉或删除 */
+
+
 
 
 
