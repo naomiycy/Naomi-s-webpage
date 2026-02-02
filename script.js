@@ -2,11 +2,12 @@
 // 设计项目详情数据
 const designProjects = {
     'reddot': {
-        title: 'Reddot Project',
+        title: 'Naomi\'s Portfolio',
         details: [
             { imageUrl: './images/portfolio1/P1-1.png', caption: 'Design detail 1.' },
             { imageUrl: './images/portfolio1/P1-2.png', caption: 'Design detail 2.' },
-            { imageUrl: './images/portfolio1/P1-3.png', caption: 'Design detail 3.' }
+            { imageUrl: './images/portfolio1/P1-3.png', caption: 'Design detail 3.' },
+            { imageUrl: './images/portfolio1/P1-4.png', caption: 'Design detail 4.' }
         ]
     }
 };
@@ -80,5 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
 });
+
 
 
