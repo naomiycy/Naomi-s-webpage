@@ -82,11 +82,13 @@ main.container {
 
 .design-card img {
     width: 100%;
-    height: 70%; /* 关键：固定70%高度 */
-    object-fit: cover; /* 关键：填充并裁剪图片以适应区域，不变形 */
-    object-position: center top; /* 让图片的顶部和中心成为焦点，您可以根据需要调整，如 `center center` */
-    flex-shrink: 0; /* 禁止图片区域收缩 */
-    display: block; /* 清除图片底部的默认间隙 */
+    height: 78%; 
+    object-fit: contain; 
+    object-position: center center;
+    flex-shrink: 0;
+    display: block;
+    background-color: #f8f9fa; 
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
 }
 
 .design-card-content {
@@ -179,6 +181,7 @@ main.container {
     background: #f8f9fa;
     border-radius: 12px;
 }
+
 
 
 
