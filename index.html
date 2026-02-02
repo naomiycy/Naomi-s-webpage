@@ -64,12 +64,28 @@
             <p class="scroll-hint">← Scroll horizontally to view more →</p>
         </section>
 
-        <!-- 模态弹窗 (点击后放大查看) -->
+        <!-- 详情模态弹窗 (点击后查看完整作品集) -->
         <div id="imageModal">
-            <div class="modal-container">
-                <span id="closeModal" onclick="closeModal()">×</span>
-                <img id="fullSizeImage" src="" alt="完整设计图">
-                <p id="imageCaption"></p>
+            <div class="modal-detail-container">
+                <!-- 顶部固定标题栏 -->
+                <div class="modal-detail-header">
+                    <h3 id="modalProjectTitle">Project Details</h3>
+                    <span id="closeModal" class="modal-close-btn" onclick="closeModal()">×</span>
+                </div>
+                
+                <!-- 核心：垂直可滚动的图片内容区 -->
+                <div class="modal-detail-content" id="modalDetailContent">
+                    <!-- 细节图片将通过JavaScript动态插入到这里 -->
+                    <!-- 示例格式：
+                    <img src="images/reddot-detail-1.jpg" alt="Reddot项目 - 流程截图1" class="detail-image">
+                    <p class="detail-caption">该页面展示了用户登录后的主仪表盘设计。</p>
+                    -->
+                </div>
+                
+                <!-- 底部提示 -->
+                <div class="modal-detail-footer">
+                    <p>Scroll to view all details • Click anywhere outside to close</p>
+                </div>
             </div>
         </div>
 
@@ -86,6 +102,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
