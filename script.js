@@ -130,7 +130,12 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=20`, {
             console.error('Fetch error:', err);
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
+    document.addEventListener('keydown', function(event) {
+    if (document.getElementById('imageModal').style.display === 'block' && event.key === 'Escape') {
+        closeModal(); 
+    }
 });
+
 
 
 
