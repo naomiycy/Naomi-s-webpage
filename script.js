@@ -60,7 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('projects');
     container.innerHTML = '<div class="loading">Loading projects...</div>';
 
-    fetch(`https://api.github.com/users/${username}/repos?per_page=20`)
+fetch(`https://api.github.com/users/${username}/repos?per_page=20`, {
+    headers: {
+        'Accept': 'application/vnd.github.v3+json' 
+    }
+})
         .then(r => r.ok ? r.json() : Promise.reject('Network error'))
         .then(repos => {
             const filtered = repos.filter(repo => !repo.fork);
@@ -86,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
 });
+
 
 
 
