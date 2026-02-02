@@ -24,13 +24,13 @@ const designProjects = {
     'project3': {
         title: 'Naomi\'s Portfolio',
         details: [
-            { imageUrl: './images/portfolio3/P3-1.png', caption: 'Design detail 1.' },
-            { imageUrl: './images/portfolio3/P3-2.png', caption: 'Design detail 2.' },
-            { imageUrl: './images/portfolio3/P3-3.png', caption: 'Design detail 3.' },
-            { imageUrl: './images/portfolio3/P3-4.png', caption: 'Design detail 4.' },
-            { imageUrl: './images/portfolio3/P3-5.png', caption: 'Design detail 5.' },
-            { imageUrl: './images/portfolio3/P3-6.png', caption: 'Design detail 6.' },
-            { imageUrl: './images/portfolio3/P3-7.png', caption: 'Design detail 7.' }
+            { imageUrl: './images/portfolio3/P3-1.jpg', caption: 'Design detail 1.' },
+            { imageUrl: './images/portfolio3/P3-2.jpg', caption: 'Design detail 2.' },
+            { imageUrl: './images/portfolio3/P3-3.jpg', caption: 'Design detail 3.' },
+            { imageUrl: './images/portfolio3/P3-4.jpg', caption: 'Design detail 4.' },
+            { imageUrl: './images/portfolio3/P3-5.jpg', caption: 'Design detail 5.' },
+            { imageUrl: './images/portfolio3/P3-6.jpg', caption: 'Design detail 6.' },
+            { imageUrl: './images/portfolio3/P3-7.jpg', caption: 'Design detail 7.' }
         ]
     }, // 注意：这里是一个逗号
     'project4': {
@@ -131,6 +131,7 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=20`, {
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
 });
+
 
 
 
