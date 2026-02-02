@@ -29,29 +29,26 @@
             <h2>My portfolios</h2>
             <p>Click any project to see details</p>
             
-            <div class="design-gallery">
-                <!-- 项目1 -->
-                <div class="design-card" onclick="openModal('reddot')">
-                    <img src="./designs/reddot-cover.jpg" alt="Reddot 项目 - 主界面设计预览">
-                    <div class="design-card-content">
-                        <h4>Test Project1</h4>
-                        <p>This is my test text</p>
-                        <span class="view-details">Check the design details →</span>
-                    </div>
-                </div>
-                
-                <!-- 项目2 -->
-                <div class="design-card" onclick="openModal('reddot')">
-                    <img src="./designs/reddot-cover.jpg" alt="Reddot 项目 - 主界面设计预览">
-                    <div class="design-card-content">
-                        <h4>Test Project2</h4>
-                        <p>This is my test text2</p>
-                        <span class="view-details">Check the design details →</span>
-                    </div>
-                </div>
-                
-                <!-- 在这里添加更多项目 -->
-            </div>
+        <!-- project 1 -->
+        <div class="design-card" onclick="openModal('reddot')">
+            <img src="images/1.jpg" alt="项目一的封面图描述">
+            <div class="design-card-content">
+                <h4>你的项目1真实名称</h4>
+                <p>你的项目1真实描述...</p>
+                <span class="view-details">Check the design details →</span>
+    </div>
+</div>
+
+        <!-- project 2 -->
+        <div class="design-card" onclick="openModal('reddot')">
+            <!-- 同理，修改这里的图片路径和描述 -->
+            <img src="designs/你的项目2封面图.jpg" alt="项目二的封面图描述">
+            <div class="design-card-content">
+                <h4>你的项目2真实名称</h4>
+                <p>你的项目2真实描述...</p>
+        <span class="view-details">Check the design details →</span>
+    </div>
+</div>
         </section>
 
         <!-- 模态弹窗 (点击后放大查看) -->
@@ -68,3 +65,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
