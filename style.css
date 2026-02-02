@@ -343,20 +343,20 @@ section > h2 {
     box-sizing: border-box;
 }
 
-/* 详情大图样式 */
+/* 详情大图样式 - 强制放大版本 */
 .detail-image {
     display: block;
-    /* 关键修改：移除最大宽度限制，改用百分比和视口单位控制 */
-    width: auto; /* 宽度自适应 */
-    max-width: 95vw; /* 最大宽度为视口宽度的95%，几乎占满屏 */
-    height: auto; /* 高度自适应 */
-    max-height: 85vh; /* 最大高度为视口高度的85%，避免过高 */
-    margin: 0 auto 2.5rem auto; /* 居中并保留底部间距 */
-    object-fit: contain; /* 确保等比例完整显示，不会被裁剪或拉伸 */
-    border-radius: 4px; /* 圆角可调小或移除 */
-    box-shadow: 0 5px 25px rgba(0,0,0,0.1); /* 阴影可调轻 */
-    background-color: #fff; /* 设置白色背景，避免图片周围有杂色 */
-    border: 1px solid #eee; /* 可选：保留极细的边框作为边界 */
+    width: auto !important;         /* 使用 !important 强制覆盖其他可能限制宽度的规则 */
+    max-width: 98vw !important;     /* 强制最大宽度为视口宽度，几乎占满 */
+    height: auto !important;        /* 高度自适应 */
+    max-height: 90vh !important;    /* 强制最大高度，确保有呼吸空间 */
+    margin: 1rem auto 3rem auto !important; /* 增加间距 */
+    object-fit: contain !important; /* 关键：确保等比例完整显示 */
+    object-position: center top;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    background-color: #ffffff;
+    border: none; /* 移除边框可能让视觉上更大 */
 }
 
 /* 图片说明文字 */
@@ -403,5 +403,6 @@ section > h2 {
         font-size: 1.3rem;
     }
 }
+
 
 
