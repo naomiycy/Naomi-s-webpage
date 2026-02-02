@@ -1,0 +1,139 @@
+/* style.css */
+/* 基础样式 */
+body {
+    padding-top: 2rem;
+    background-color: #f8f9fa;
+    font-family: sans-serif;
+}
+main.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* GitHub项目卡片样式 */
+.project-card {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-left: 4px solid #7e57c2;
+}
+.project-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+.project-meta {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.8rem;
+}
+.project-meta span {
+    margin-right: 1rem;
+}
+#projects .loading {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+/* 设计作品画廊 - 垂直布局 */
+.design-gallery {
+    display: block; /* 垂直排列 */
+}
+.design-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 500px; /* 控制卡片最大宽度 */
+    margin: 0 auto 2rem auto; /* 居中并设置底部间距 */
+    min-height: 380px; /* 统一最小高度 */
+    display: flex;
+    flex-direction: column;
+}
+.design-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+}
+.design-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.design-card-content {
+    padding: 1.2rem;
+    flex-grow: 1; /* 让内容区域填充剩余空间 */
+    display: flex;
+    flex-direction: column;
+}
+.design-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+.design-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+.design-card .view-details {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #7e57c2;
+    font-weight: 500;
+}
+
+/* 模态弹窗样式 */
+#imageModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.modal-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+#closeModal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+#fullSizeImage {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+#imageCaption {
+    color: #ddd;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* 画廊容器样式 */
+.gallery-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
