@@ -10,6 +10,20 @@ main.container {
     margin: 0 auto;
 }
 
+/* 垂直排列画廊样式 */
+.design-gallery {
+    display: block; /* 将网格布局改为普通的块级流 */
+}
+
+.design-card {
+    display: flex; /* 使用Flexbox可以更好地控制内部垂直对齐 */
+    flex-direction: column;
+    width: 100%; /* 卡片宽度占满容器 */
+    max-width: 500px; /* 给卡片设置一个最大宽度，防止在大屏幕上过宽 */
+    margin: 0 auto 2rem auto; /* 上下左右自动居中，并设置底部间距 */
+    min-height: 380px; /* 统一最小高度，确保高度一致 */
+}
+
 /* GitHub项目卡片样式 */
 .project-card {
     background: white;
@@ -137,3 +151,4 @@ main.container {
     background: #f8f9fa;
     border-radius: 12px;
 }
+
