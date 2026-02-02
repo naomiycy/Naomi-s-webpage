@@ -68,20 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
             let html = '';
             originalRepos.forEach(repo => {
                 const updateTime = new Date(repo.updated_at).toLocaleDateString('zh-CN');
-                html += `
-                    <div class="project-card">
-                        <h3>
-                            <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
-                        </h3>
-                        <p>${repo.description || '暂无描述'}</p>
-                        <div class="project-meta">
-                            <span>⭐ ${repo.stargazers_count}</span>
-                            <span>语言: ${repo.language || '未指定'}</span>
-                            <span>更新: ${updateTime}</span>
-                        </div>
-                    </div>
-                `;
-            });
+            // 修改后的项目信息应为英文
+            html += `
+                <div class="project-card">
+                    <h3>
+                        <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+                    </h3>
+                    <p>${repo.description || 'No description'}</p> <!-- 英文描述 -->
+                    <div class="project-meta">
+                        <span>⭐ ${repo.stargazers_count}</span>
+                        <span>Lang: ${repo.language || 'N/A'}</span> <!-- 英文标签 -->
+                        <span>Updated: ${new Date(repo.updated_at).toLocaleDateString('en-US')}</span> <!-- 英文日期格式 -->
+                </div>
+            </div>
+`;
             projectsContainer.innerHTML = html;
         })
         .catch(error => {
@@ -90,3 +90,4 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<div class="error"><p style="color:#d32f2f;">项目加载失败，请稍后重试。</p></div>';
         });
 });
+
