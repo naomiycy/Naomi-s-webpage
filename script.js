@@ -1,13 +1,55 @@
 // script.js - 完整修正版
 // 设计项目详情数据
 const designProjects = {
-    'reddot': {
+    'project1': {
         title: 'Naomi\'s Portfolio',
         details: [
             { imageUrl: './images/portfolio1/P1-1.png', caption: 'Design detail 1.' },
             { imageUrl: './images/portfolio1/P1-2.png', caption: 'Design detail 2.' },
             { imageUrl: './images/portfolio1/P1-3.png', caption: 'Design detail 3.' },
             { imageUrl: './images/portfolio1/P1-4.png', caption: 'Design detail 4.' }
+        ]
+},
+        'project2': {
+        title: 'Naomi\'s Portfolio',
+        details: [
+            { imageUrl: './images/portfolio2/p2-1.png', caption: 'Design detail 1.' },
+            { imageUrl: './images/portfolio2/p2-2.png', caption: 'Design detail 2.' },
+            { imageUrl: './images/portfolio2/p2-3.png', caption: 'Design detail 3.' },
+            { imageUrl: './images/portfolio2/p2-4.png', caption: 'Design detail 4.' },
+            { imageUrl: './images/portfolio2/p2-5.png', caption: 'Design detail 5.' }
+        ]
+},
+        
+        'project3': {
+        title: 'Naomi\'s Portfolio',
+        details: [
+            { imageUrl: './images/portfolio3/P3-1.png', caption: 'Design detail 1.' },
+            { imageUrl: './images/portfolio3/P3-2.png', caption: 'Design detail 2.' },
+            { imageUrl: './images/portfolio3/P3-3.png', caption: 'Design detail 3.' },
+            { imageUrl: './images/portfolio3/P3-4.png', caption: 'Design detail 4.' },
+            { imageUrl: './images/portfolio3/P3-5.png', caption: 'Design detail 5.' },
+            { imageUrl: './images/portfolio3/P3-6.png', caption: 'Design detail 6.' },
+            { imageUrl: './images/portfolio3/P3-7.png', caption: 'Design detail 7.' }
+        ]
+},
+        
+        'project4': {
+        title: 'Naomi\'s Portfolio',
+        details: [
+            { imageUrl: './images/portfolio4/P4-1.png', caption: 'Design detail 1.' },
+            { imageUrl: './images/portfolio4/P4-2.png', caption: 'Design detail 2.' },
+            { imageUrl: './images/portfolio4/P4-3.png', caption: 'Design detail 3.' },
+            { imageUrl: './images/portfolio4/P4-4.png', caption: 'Design detail 4.' },
+            { imageUrl: './images/portfolio4/P4-5.png', caption: 'Design detail 5.' }
+        ]
+},
+        'project5': {
+        title: 'Naomi\'s Portfolio',
+        details: [
+            { imageUrl: './images/portfolio5/P5-1.png', caption: 'Design detail 1.' },
+            { imageUrl: './images/portfolio5/P5-2.png', caption: 'Design detail 2.' },
+            { imageUrl: './images/portfolio5/P5-3.png', caption: 'Design detail 3.' }
         ]
     }
 };
@@ -90,6 +132,7 @@ fetch(`https://api.github.com/users/${username}/repos?per_page=20`, {
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
 });
+
 
 
 
