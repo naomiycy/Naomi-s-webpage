@@ -45,8 +45,13 @@ function closeModal() {
 }
 
 // 点击背景关闭
-document.getElementById('imageModal').addEventListener('click', function(e) {
-    if (e.target.id === 'imageModal') closeModal();
+document.getElementById('imageModal').addEventListener('click', function(event) {
+    // 检查点击事件是否发生在内容容器上
+    const isClickInsideContent = event.target.closest('.modal-detail-container');
+    // 如果点击发生在内容容器外部，则关闭模态框
+    if (!isClickInsideContent) {
+        closeModal();
+    }
 });
 
 // 动态加载GitHub项目
@@ -81,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             container.innerHTML = '<p class="error">Failed to load projects.</p>';
         });
 });
+
 
 
 
