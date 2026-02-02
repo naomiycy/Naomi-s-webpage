@@ -4,254 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naomi 的作品集</title>
+    <!-- 引入PicoCSS框架 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <style>
-        body { padding-top: 2rem; background-color: #f8f9fa; font-family: sans-serif; }
-        main.container { max-width: 900px; }
-        .project-card { 
-            background: white; 
-            padding: 1.5rem; 
-            margin-bottom: 1.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border-left: 4px solid #7e57c2;
-        }
-        .project-card h3 { margin-top: 0; color: #333; }
-        .project-meta { color: #666; font-size: 0.9rem; margin-top: 0.8rem; }
-        .project-meta span { margin-right: 1rem; }
-        #projects .loading { text-align: center; padding: 3rem; color: #666; }
-        .figma-embed-wrapper { 
-            position: relative; 
-            padding-bottom: 56.25%; /* 16:9 比例 */
-            height: 0; 
-            overflow: hidden; 
-            margin: 2rem 0;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-        .figma-embed-wrapper iframe { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            border: none;
-        }
-    </style>
+    <!-- 引入自定义样式文件 -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
-        <header style="text-align: center; margin-bottom: 3rem;">
+        <header class="text-center">
             <h1>Naomi's Portfolio</h1>
             <p>GitHub code share</p>
         </header>
 
-        <!-- =========== 设计作品画廊 =========== -->
-<section style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
-    <h2>My portfolios</h2>
-    <p>Click anyway to see details</p>
+        <!-- GitHub项目动态加载区 -->
+        <section>
+            <h2>我的开源项目</h2>
+            <div id="projects">
+                <!-- 项目将通过JavaScript动态加载到这里 -->
+            </div>
+        </section>
 
-    <!-- 画廊网格容器 -->
-    <div class="design-gallery" style="
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 1.5rem;
-    ">
-        <!-- Portfolio 1 - Reddot -->
-        <div class="design-card" style="
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        " onclick="openModal('reddot')">
-            <!-- cover page -->
-            <img 
-                src="./designs/reddot-cover.jpg" 
-                alt="Reddot 项目 - 主界面设计预览"
-                style="width: 100%; height: 200px; object-fit: cover;"
-            >
-            <!-- 项目信息 -->
-            <div style="padding: 1.2rem;">
-                <h4 style="margin: 0 0 0.5rem 0; color: #333;">Test Project1</h4>
-                <p style="margin: 0; color: #666; font-size: 0.95rem; line-height: 1.5;">
-                    This is my test text
-                </p>
-                <span style="display: inline-block; margin-top: 0.8rem; font-size: 0.85rem; color: #7e57c2; font-weight: 500;">Check the design details →</span>
+        <!-- 设计作品画廊 -->
+        <section class="gallery-section">
+            <h2>My portfolios</h2>
+            <p>Click any project to see details</p>
+            
+            <div class="design-gallery">
+                <!-- 项目1 -->
+                <div class="design-card" onclick="openModal('reddot')">
+                    <img src="./designs/reddot-cover.jpg" alt="Reddot 项目 - 主界面设计预览">
+                    <div class="design-card-content">
+                        <h4>Test Project1</h4>
+                        <p>This is my test text</p>
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="design-card" onclick="openModal('reddot')">
+                    <img src="./designs/reddot-cover.jpg" alt="Reddot 项目 - 主界面设计预览">
+                    <div class="design-card-content">
+                        <h4>Test Project2</h4>
+                        <p>This is my test text2</p>
+                        <span class="view-details">Check the design details →</span>
+                    </div>
+                </div>
+                
+                <!-- 在这里添加更多项目 -->
+            </div>
+        </section>
+
+        <!-- 模态弹窗 (点击后放大查看) -->
+        <div id="imageModal">
+            <div class="modal-container">
+                <span id="closeModal" onclick="closeModal()">×</span>
+                <img id="fullSizeImage" src="" alt="完整设计图">
+                <p id="imageCaption"></p>
             </div>
         </div>
-        <!-- 画廊网格容器 -->
-    <div class="design-gallery" style="
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 1.5rem;
-    ">
-        <!-- Portfolio 2 - Reddot -->
-        <div class="design-card" style="
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        " onclick="openModal('reddot')">
-            <!-- cover page -->
-            <img 
-                src="./designs/reddot-cover.jpg" 
-                alt="Reddot 项目 - 主界面设计预览"
-                style="width: 100%; height: 200px; object-fit: cover;"
-            >
-            <!-- 项目信息 -->
-            <div style="padding: 1.2rem;">
-                <h4 style="margin: 0 0 0.5rem 0; color: #333;">Test Project2</h4>
-                <p style="margin: 0; color: #666; font-size: 0.95rem; line-height: 1.5;">
-                    This is my test text2
-                </p>
-                <span style="display: inline-block; margin-top: 0.8rem; font-size: 0.85rem; color: #7e57c2; font-weight: 500;">Check the design details →</span>
-            </div>
-        </div>
-
-    
-        
-    </div>
-</section>
-
-<!-- =========== 模态弹窗 (点击后放大查看) =========== -->
-<div id="imageModal" style="
-    display: none; /* 默认隐藏 */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* 半透明黑色遮罩 */
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-">
-    <!-- 大图容器 -->
-    <div style="position: relative; max-width: 90%; max-height: 90%;">
-        <!-- 关闭按钮 -->
-        <span onclick="closeModal()" style="
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            user-select: none;
-        ">×</span>
-        <!-- 大图 -->
-        <img id="fullSizeImage" src="" alt="完整设计图" style="
-            display: block;
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        ">
-        <!-- 图片说明 -->
-        <p id="imageCaption" style="color: #ddd; text-align: center; margin-top: 1rem;"></p>
-    </div>
-</div>
-
-<script>
-// 定义设计项目的详细信息库
-const designProjects = {
-    'reddot': {
-        fullImage: './designs/reddot-full.jpg',
-        title: 'Reddot 项目完整设计',
-        description: '这是 Reddot 项目的高清完整设计图，展示了所有界面的细节与交互流程。'
-    }
-    // 添加更多项目：
-    // 'project2': {
-    //     fullImage: './designs/project2-full.jpg',
-    //     title: '...',
-    //     description: '...'
-    // }
-};
-
-// 打开模态窗的函数
-function openModal(projectKey) {
-    const project = designProjects[projectKey];
-    if (project) {
-        document.getElementById('fullSizeImage').src = project.fullImage;
-        document.getElementById('imageCaption').textContent = project.description;
-        document.getElementById('imageModal').style.display = 'flex';
-        // 禁止背景滚动
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// 关闭模态窗的函数
-function closeModal() {
-    document.getElementById('imageModal').style.display = 'none';
-    // 恢复背景滚动
-    document.body.style.overflow = 'auto';
-}
-
-// 点击模态窗的黑色遮罩背景也可以关闭
-document.getElementById('imageModal').addEventListener('click', function(event) {
-    if (event.target.id === 'imageModal') {
-        closeModal();
-    }
-});
-</script>
     </main>
 
-    <script>
-        // 配置：你的 GitHub 用户名
-        const username = 'naomiycy';
-
-        // 获取并展示项目
-        fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=20`)
-            .then(response => {
-                if (!response.ok) throw new Error('加载失败');
-                return response.json();
-            })
-            .then(repos => {
-                const container = document.getElementById('projects');
-                // 过滤掉 Fork 的仓库
-                const originalRepos = repos.filter(repo => !repo.fork);
-                
-                if (originalRepos.length === 0) {
-                    container.innerHTML = '<p>暂无公开项目。</p>';
-                    return;
-                }
-
-                // 按星标数排序
-                originalRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
-                
-                let html = '';
-                originalRepos.forEach(repo => {
-                    const updateTime = new Date(repo.updated_at).toLocaleDateString('zh-CN');
-                    html += `
-                        <div class="project-card">
-                            <h3>
-                                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-                            </h3>
-                            <p>${repo.description || '暂无描述'}</p>
-                            <div class="project-meta">
-                                <span>⭐ ${repo.stargazers_count}</span>
-                                <span>语言: ${repo.language || '未指定'}</span>
-                                <span>更新: ${updateTime}</span>
-                            </div>
-                        </div>
-                    `;
-                });
-                container.innerHTML = html;
-            })
-            .catch(error => {
-                document.getElementById('projects').innerHTML = 
-                    `<p style="color:#d32f2f;">项目加载失败，请稍后重试。</p>`;
-                console.error(error);
-            });
-    </script>
+    <!-- 引入自定义JavaScript文件 -->
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
